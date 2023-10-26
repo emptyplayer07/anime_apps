@@ -19,13 +19,17 @@ class AnimeGrid extends StatelessWidget {
       mainAxisSpacing: 16,
       children: animeModelList.map((e) {
         return Card(
+          margin: EdgeInsets.all(10),
           child: Column(
             children: [
               Expanded(
                 flex: 2,
-                child: Image.asset(
-                  e.imageAsset,
-                  fit: BoxFit.cover,
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  child: Image.asset(
+                    e.imageAsset,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
               Expanded(
@@ -34,7 +38,7 @@ class AnimeGrid extends StatelessWidget {
                     child: Column(
                       children: [
                         Text(e.name),
-                        Text(e.description),
+                        Text("Episode : ${e.episode}"),
                         Text('Rating : ${e.rating}'),
                       ],
                     ),

@@ -1,6 +1,5 @@
 import 'package:anime_apps/models/animeModel.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class AnimeList extends StatelessWidget {
   const AnimeList({super.key});
@@ -10,17 +9,25 @@ class AnimeList extends StatelessWidget {
     return ListView.builder(
       itemBuilder: (context, index) {
         final AnimeModel animeModel = animeModelList[index];
-        return Container(
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(color: Colors.amber),
-            child: Stack(
+        return Card(
+            child: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.all(10),
+              child: Image.asset(
+                animeModel.imageAsset,
+                fit: BoxFit.cover,
+              ),
+            ),
+            Column(
               children: [
-                Image.asset(
-                  animeModel.imageAsset,
-                  fit: BoxFit.fill,
-                )
+                Text("${animeModel.name}"),
+                Text("Episode : ${animeModel.episode}"),
+                Text('Rating : ${animeModel.rating}'),
               ],
             )
+          ],
+        )
             // Row(
             //   children: [
             //     Expanded(
