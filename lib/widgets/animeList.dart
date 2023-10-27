@@ -1,4 +1,5 @@
 import 'package:anime_apps/models/animeModel.dart';
+import 'package:anime_apps/views/detailsAnime.dart';
 import 'package:flutter/material.dart';
 
 class AnimeList extends StatelessWidget {
@@ -9,46 +10,39 @@ class AnimeList extends StatelessWidget {
     return ListView.builder(
       itemBuilder: (context, index) {
         final AnimeModel animeModel = animeModelList[index];
-        return Card(
-            child: Column(
-          children: [
-            Container(
-              padding: EdgeInsets.all(10),
-              child: Image.asset(
-                animeModel.imageAsset,
-                fit: BoxFit.cover,
+        return InkWell(
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return DetailsAnime(
+                name: animeModel,
+              );
+            }));
+          },
+          child: Card(
+              child: Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(10),
+                child: Image.asset(
+                  animeModel.imageAsset,
+                  fit: BoxFit.cover,
+                ),
               ),
-            ),
-            Column(
-              children: [
-                Text("${animeModel.name}"),
-                Text("Episode : ${animeModel.episode}"),
-                Text('Rating : ${animeModel.rating}'),
-              ],
-            )
-          ],
-        )
-            // Row(
-            //   children: [
-            //     Expanded(
-            //       flex: 2,
-            //       child: Image.asset(
-            //         animeModel.imageAsset,
-            //         fit: BoxFit.cover,
-            //       ),
-            //     ),
-            //     Expanded(
-            //         flex: 2,
-            //         child: Column(
-            //           children: [
-            //             Text(animeModel.name),
-            //             Text(animeModel.description),
-            //             Text('Rating ${animeModel.rating}'),
-            //           ],
-            //         ))
-            //   ],
-            // ),
-            );
+              Column(
+                children: [
+                  Text(
+                    animeModel.name,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+                  ),
+                  Text("Episode : ${animeModel.episode}"),
+                ],
+              )
+            ],
+          )),
+        );
       },
       itemCount: animeModelList.length,
     );

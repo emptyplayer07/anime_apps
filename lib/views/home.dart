@@ -1,6 +1,5 @@
 import 'package:anime_apps/widgets/animeList.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import '../widgets/animeGrid.dart';
 
 class Home extends StatelessWidget {
@@ -10,15 +9,17 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     final sizeWidth = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         flexibleSpace: Column(
           children: [
             Container(
               width: sizeWidth,
               height: 50,
+              color: Colors.black,
               child: Image.asset(
                 'images/otakudesu.png',
-                fit: BoxFit.fill,
+                fit: BoxFit.contain,
               ),
             ),
             Container(
