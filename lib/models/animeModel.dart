@@ -17,7 +17,8 @@ class AnimeModel {
 var animeModelList = [
   AnimeModel(
     name: 'One Piece',
-    description: 'One piece description',
+    description:
+        'One Piece adalah sebuah manga dan anime yang menceritakan tentang petualangan sekelompok bajak laut dalam mencari harta karun legendaris, One Piece. One Piece dibuat oleh Eiichiro Oda pada Agustus 1997 di Shonen Jump terbitan Shueisha dan hingga kini masih terus berlanjut.',
     imageAsset: 'images/one_piece.jpg',
     rating: '9.0',
     episode: '1050',
