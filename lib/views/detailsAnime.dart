@@ -1,9 +1,6 @@
 import 'package:anime_apps/models/animeModel.dart';
 import 'package:flutter/material.dart';
 
-import '../widgets/animeGrid.dart';
-import '../widgets/animeList.dart';
-
 class DetailsAnime extends StatelessWidget {
   final AnimeModel name;
   const DetailsAnime({
@@ -71,102 +68,105 @@ class DetailsAnime extends StatelessWidget {
                 ),
               ),
             ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      width: 2,
-                      color: Colors.white,
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        width: 2,
+                        color: Colors.white,
+                      ),
+                    ),
+                    margin: const EdgeInsets.all(15),
+                    width: sizeWidth / 2,
+                    height: sizeHeight / 2,
+                    child: Image.asset(
+                      name.imageAsset,
+                      fit: BoxFit.fill,
                     ),
                   ),
-                  margin: const EdgeInsets.all(15),
-                  width: sizeWidth / 2,
-                  height: sizeHeight / 2,
-                  child: Image.asset(
-                    name.imageAsset,
-                    fit: BoxFit.fill,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.only(top: 15, bottom: 15),
+                        child: Text(
+                          'Judul : ${name.name}',
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(top: 15, bottom: 15),
+                        child: Text(
+                          'Produser : ${name.name}',
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(top: 15, bottom: 15),
+                        child: Text(
+                          'Total Episode : ${name.name}',
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(top: 15, bottom: 15),
+                        child: Text(
+                          'Durasi : ${name.name}',
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(top: 15, bottom: 15),
+                        child: Text(
+                          'Tanggal Rilis : ${name.name}',
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(top: 15, bottom: 15),
+                        child: Text(
+                          'Studio : ${name.name}',
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(top: 15, bottom: 15),
+                        child: Text(
+                          'Genre : ${name.name}',
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(top: 15, bottom: 15),
+                        child: Text(
+                          'Skor : ${name.name}',
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      )
+                    ],
                   ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(top: 15, bottom: 15),
-                      child: Text(
-                        'Judul : ${name.name}',
-                        style: const TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 15, bottom: 15),
-                      child: Text(
-                        'Produser : ${name.name}',
-                        style: const TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 15, bottom: 15),
-                      child: Text(
-                        'Total Episode : ${name.name}',
-                        style: const TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 15, bottom: 15),
-                      child: Text(
-                        'Durasi : ${name.name}',
-                        style: const TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 15, bottom: 15),
-                      child: Text(
-                        'Tanggal Rilis : ${name.name}',
-                        style: const TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 15, bottom: 15),
-                      child: Text(
-                        'Studio : ${name.name}',
-                        style: const TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 15, bottom: 15),
-                      child: Text(
-                        'Genre : ${name.name}',
-                        style: const TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 15, bottom: 15),
-                      child: Text(
-                        'Skor : ${name.name}',
-                        style: const TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ],
+                ],
+              ),
             ),
             Container(
               width: sizeWidth / 2,
@@ -178,6 +178,19 @@ class DetailsAnime extends StatelessWidget {
                 ),
               ),
             ),
+            Container(
+              child: Column(
+                children: [
+                  for (var i = 0; i <= name.episode; i++)
+                    Text(
+                      "can",
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    )
+                ],
+              ),
+            )
           ],
         ),
       ),
