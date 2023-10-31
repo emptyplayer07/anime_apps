@@ -1,7 +1,7 @@
 import 'package:anime_apps/models/animeModel.dart';
 import 'package:flutter/material.dart';
 
-class DetailsAnime extends StatelessWidget {
+class DetailsAnime extends StatefulWidget {
   final AnimeModel name;
   const DetailsAnime({
     super.key,
@@ -9,9 +9,20 @@ class DetailsAnime extends StatelessWidget {
   });
 
   @override
+  State<DetailsAnime> createState() => _DetailsAnimeState();
+}
+
+class _DetailsAnimeState extends State<DetailsAnime> {
+  bool isFavorite = false;
+  @override
   Widget build(BuildContext context) {
+    List eps = [];
     final sizeWidth = MediaQuery.of(context).size.width;
     final sizeHeight = MediaQuery.of(context).size.height;
+    for (var i = 1; i <= widget.name.episode; i++) {
+      eps.add(i);
+    }
+
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -60,7 +71,7 @@ class DetailsAnime extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  '${name.name} subtitel Indonesia',
+                  '${widget.name.name} subtitel Indonesia',
                   style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -73,28 +84,48 @@ class DetailsAnime extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 2,
-                        color: Colors.white,
+                  Stack(alignment: Alignment.bottomRight, children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 2,
+                          color: Colors.white,
+                        ),
+                      ),
+                      margin: const EdgeInsets.all(15),
+                      width: sizeWidth / 2,
+                      height: sizeHeight / 2,
+                      child: Image.asset(
+                        widget.name.imageAsset,
+                        fit: BoxFit.fill,
                       ),
                     ),
-                    margin: const EdgeInsets.all(15),
-                    width: sizeWidth / 2,
-                    height: sizeHeight / 2,
-                    child: Image.asset(
-                      name.imageAsset,
-                      fit: BoxFit.fill,
-                    ),
-                  ),
+                    Container(
+                        padding: const EdgeInsets.only(bottom: 25, right: 25),
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              isFavorite = !isFavorite;
+                            });
+                          },
+                          child: isFavorite
+                              ? const Icon(
+                                  Icons.favorite_border,
+                                  color: Colors.white,
+                                )
+                              : const Icon(
+                                  Icons.favorite,
+                                  color: Colors.white,
+                                ),
+                        )),
+                  ]),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
                         margin: const EdgeInsets.only(top: 15, bottom: 15),
                         child: Text(
-                          'Judul : ${name.name}',
+                          'Judul : ${widget.name.name}',
                           style: const TextStyle(
                             color: Colors.white,
                           ),
@@ -103,7 +134,7 @@ class DetailsAnime extends StatelessWidget {
                       Container(
                         margin: const EdgeInsets.only(top: 15, bottom: 15),
                         child: Text(
-                          'Produser : ${name.name}',
+                          'Produser : ${widget.name.produser}',
                           style: const TextStyle(
                             color: Colors.white,
                           ),
@@ -112,7 +143,7 @@ class DetailsAnime extends StatelessWidget {
                       Container(
                         margin: const EdgeInsets.only(top: 15, bottom: 15),
                         child: Text(
-                          'Total Episode : ${name.name}',
+                          'Total Episode : ${widget.name.episode}',
                           style: const TextStyle(
                             color: Colors.white,
                           ),
@@ -121,7 +152,7 @@ class DetailsAnime extends StatelessWidget {
                       Container(
                         margin: const EdgeInsets.only(top: 15, bottom: 15),
                         child: Text(
-                          'Durasi : ${name.name}',
+                          'Durasi : ${widget.name.durasi}',
                           style: const TextStyle(
                             color: Colors.white,
                           ),
@@ -130,7 +161,7 @@ class DetailsAnime extends StatelessWidget {
                       Container(
                         margin: const EdgeInsets.only(top: 15, bottom: 15),
                         child: Text(
-                          'Tanggal Rilis : ${name.name}',
+                          'Tanggal Rilis : ${widget.name.tglRilis}',
                           style: const TextStyle(
                             color: Colors.white,
                           ),
@@ -139,7 +170,7 @@ class DetailsAnime extends StatelessWidget {
                       Container(
                         margin: const EdgeInsets.only(top: 15, bottom: 15),
                         child: Text(
-                          'Studio : ${name.name}',
+                          'Studio : ${widget.name.studio}',
                           style: const TextStyle(
                             color: Colors.white,
                           ),
@@ -148,7 +179,7 @@ class DetailsAnime extends StatelessWidget {
                       Container(
                         margin: const EdgeInsets.only(top: 15, bottom: 15),
                         child: Text(
-                          'Genre : ${name.name}',
+                          'Genre : ${widget.name.genre}',
                           style: const TextStyle(
                             color: Colors.white,
                           ),
@@ -157,7 +188,7 @@ class DetailsAnime extends StatelessWidget {
                       Container(
                         margin: const EdgeInsets.only(top: 15, bottom: 15),
                         child: Text(
-                          'Skor : ${name.name}',
+                          'Skor : ${widget.name.skor}',
                           style: const TextStyle(
                             color: Colors.white,
                           ),
@@ -169,25 +200,41 @@ class DetailsAnime extends StatelessWidget {
               ),
             ),
             Container(
-              width: sizeWidth / 2,
+              width: sizeWidth,
               margin: const EdgeInsets.all(15),
               child: Text(
-                name.description,
+                widget.name.description,
                 style: const TextStyle(
                   color: Colors.white,
                 ),
+                textAlign: TextAlign.justify,
               ),
             ),
             Container(
+              //width: sizeWidth,
+              margin: const EdgeInsets.all(15),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  for (var i = 0; i <= name.episode; i++)
-                    Text(
-                      "can",
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    )
+                  ...eps.map((e) => Container(
+                        width: sizeWidth,
+                        padding: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        margin: const EdgeInsets.only(
+                          top: 5,
+                          bottom: 5,
+                        ),
+                        child: Text(
+                          "${widget.name.name} Episode $e Subtitle Indonesia",
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ))
                 ],
               ),
             )

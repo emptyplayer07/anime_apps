@@ -30,7 +30,7 @@ class AnimeGrid extends StatelessWidget {
             child: Column(
               children: [
                 Expanded(
-                  flex: 2,
+                  flex: 5,
                   child: Container(
                     padding: const EdgeInsets.all(10),
                     child: Image.asset(
@@ -39,16 +39,16 @@ class AnimeGrid extends StatelessWidget {
                     ),
                   ),
                 ),
-                Expanded(
-                  flex: 2,
-                  child: SingleChildScrollView(
+                SingleChildScrollView(
+                  child: Container(
+                    padding: EdgeInsets.only(bottom: 10),
                     child: Column(
                       children: [
                         Text(
                           e.name,
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 18,
+                            //fontSize: 18,
                           ),
                         ),
                         Text("Episode : ${e.episode}"),
