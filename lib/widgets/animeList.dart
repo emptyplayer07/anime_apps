@@ -1,5 +1,6 @@
 import 'package:anime_apps/models/animeModel.dart';
-import 'package:anime_apps/views/detailsAnime.dart';
+import 'package:anime_apps/views/detailScreen.dart';
+import 'package:anime_apps/views/detailsAnimeMobile.dart';
 import 'package:flutter/material.dart';
 
 class AnimeList extends StatelessWidget {
@@ -13,7 +14,7 @@ class AnimeList extends StatelessWidget {
         return InkWell(
           onTap: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return DetailsAnime(
+              return DetailScreen(
                 name: animeModel,
               );
             }));

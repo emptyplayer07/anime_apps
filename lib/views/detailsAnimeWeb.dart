@@ -1,18 +1,18 @@
 import 'package:anime_apps/models/animeModel.dart';
 import 'package:flutter/material.dart';
 
-class DetailsAnime extends StatefulWidget {
+class DetailsAnimeWeb extends StatefulWidget {
   final AnimeModel name;
-  const DetailsAnime({
+  const DetailsAnimeWeb({
     super.key,
     required this.name,
   });
 
   @override
-  State<DetailsAnime> createState() => _DetailsAnimeState();
+  State<DetailsAnimeWeb> createState() => _DetailsAnimeWebState();
 }
 
-class _DetailsAnimeState extends State<DetailsAnime> {
+class _DetailsAnimeWebState extends State<DetailsAnimeWeb> {
   bool isFavorite = false;
   @override
   Widget build(BuildContext context) {
@@ -200,7 +200,7 @@ class _DetailsAnimeState extends State<DetailsAnime> {
               ),
             ),
             Container(
-              width: sizeWidth,
+              width: sizeWidth / 2,
               margin: const EdgeInsets.all(15),
               child: Text(
                 widget.name.description,
@@ -217,7 +217,7 @@ class _DetailsAnimeState extends State<DetailsAnime> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ...eps.map((e) => Container(
-                        width: sizeWidth,
+                        width: sizeWidth / 2,
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           color: Colors.white,

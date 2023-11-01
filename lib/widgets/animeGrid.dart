@@ -1,5 +1,6 @@
 import 'package:anime_apps/models/animeModel.dart';
-import 'package:anime_apps/views/detailsAnime.dart';
+import 'package:anime_apps/views/detailScreen.dart';
+import 'package:anime_apps/views/detailsAnimeWeb.dart';
 import 'package:flutter/material.dart';
 
 class AnimeGrid extends StatelessWidget {
@@ -22,7 +23,7 @@ class AnimeGrid extends StatelessWidget {
         return InkWell(
           onTap: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return DetailsAnime(name: e);
+              return DetailScreen(name: e);
             }));
           },
           child: Card(

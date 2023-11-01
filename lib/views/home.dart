@@ -26,7 +26,7 @@ class Home extends StatelessWidget {
               width: sizeWidth,
               height: 1,
               decoration: const BoxDecoration(
-                color: Colors.white,
+                color: Color.fromRGBO(255, 255, 255, 1),
               ),
             ),
             Container(
