@@ -1,4 +1,7 @@
+// ignore_for_file: file_names
+
 import 'package:anime_apps/models/animeModel.dart';
+import 'package:anime_apps/views/playAnime.dart';
 import 'package:flutter/material.dart';
 
 class DetailsAnimeMobile extends StatefulWidget {
@@ -216,22 +219,34 @@ class _DetailsAnimeMobileState extends State<DetailsAnimeMobile> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ...eps.map((e) => Container(
-                        width: sizeWidth,
-                        padding: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        margin: const EdgeInsets.only(
-                          top: 5,
-                          bottom: 5,
-                        ),
-                        child: Text(
-                          "${widget.name.name} Episode $e Subtitle Indonesia",
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
+                  ...eps.map((e) => InkWell(
+                        onTap: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return playAnime(
+                              episode: e,
+                              judul: widget.name.name,
+                              image: widget.name.imageAsset,
+                            );
+                          }));
+                        },
+                        child: Container(
+                          width: sizeWidth,
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          margin: const EdgeInsets.only(
+                            top: 5,
+                            bottom: 5,
+                          ),
+                          child: Text(
+                            "${widget.name.name} Episode $e Subtitle Indonesia",
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ))

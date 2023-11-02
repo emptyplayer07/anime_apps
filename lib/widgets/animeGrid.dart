@@ -1,6 +1,7 @@
+// ignore_for_file: file_names
+
 import 'package:anime_apps/models/animeModel.dart';
 import 'package:anime_apps/views/detailScreen.dart';
-import 'package:anime_apps/views/detailsAnimeWeb.dart';
 import 'package:flutter/material.dart';
 
 class AnimeGrid extends StatelessWidget {
@@ -13,7 +14,6 @@ class AnimeGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AnimeModel animeModel;
     return GridView.count(
       crossAxisCount: gridCount,
       crossAxisSpacing: 16,
@@ -42,7 +42,7 @@ class AnimeGrid extends StatelessWidget {
                 ),
                 SingleChildScrollView(
                   child: Container(
-                    padding: EdgeInsets.only(bottom: 10),
+                    padding: const EdgeInsets.only(bottom: 10),
                     child: Column(
                       children: [
                         Text(

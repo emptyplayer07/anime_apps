@@ -44,10 +44,12 @@ class Home extends StatelessWidget {
             builder: (BuildContext context, BoxConstraints constraints) {
           if (constraints.maxWidth <= 600) {
             return const AnimeList();
-          } else {
+          } else if (constraints.maxWidth <= 1400) {
             return const AnimeGrid(
               gridCount: 4,
             );
+          } else {
+            return const AnimeGrid(gridCount: 5);
           }
         }),
       ),

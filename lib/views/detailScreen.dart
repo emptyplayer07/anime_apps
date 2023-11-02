@@ -1,9 +1,9 @@
+// ignore_for_file: file_names
+
 import 'package:anime_apps/models/animeModel.dart';
 import 'package:anime_apps/views/detailsAnimeMobile.dart';
 import 'package:anime_apps/views/detailsAnimeWeb.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class DetailScreen extends StatelessWidget {
   final AnimeModel name;
