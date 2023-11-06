@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:anime_apps/models/animeModel.dart';
-import 'package:anime_apps/views/playAnime.dart';
+import 'package:anime_apps/views/playVideo.dart';
 import 'package:flutter/material.dart';
 
 class DetailsAnimeMobile extends StatefulWidget {
@@ -223,7 +223,7 @@ class _DetailsAnimeMobileState extends State<DetailsAnimeMobile> {
                         onTap: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
-                            return playAnime(
+                            return PlayVideo(
                               episode: e,
                               judul: widget.name.name,
                               image: widget.name.imageAsset,
