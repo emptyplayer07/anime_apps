@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, no_leading_underscores_for_local_identifiers
+
 import 'package:appinio_video_player/appinio_video_player.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +20,8 @@ class PlayVideo extends StatefulWidget {
 
 class _PlayVideoState extends State<PlayVideo> {
   late CustomVideoPlayerController _customVideoPlayer;
-  String asetVideoPath = "images/test.mp4";
+  Uri videoUrl = Uri.parse(
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4");
   @override
   void initState() {
     super.initState();
@@ -28,7 +31,6 @@ class _PlayVideoState extends State<PlayVideo> {
   @override
   Widget build(BuildContext context) {
     final sizeWidth = MediaQuery.of(context).size.width;
-    final sizeHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -73,7 +75,7 @@ class _PlayVideoState extends State<PlayVideo> {
 
   void initializeVideoPlayer() {
     VideoPlayerController _videoPlayerController;
-    _videoPlayerController = VideoPlayerController.asset(asetVideoPath)
+    _videoPlayerController = VideoPlayerController.networkUrl(videoUrl)
       ..initialize().then((value) {
         setState(() {});
       });
